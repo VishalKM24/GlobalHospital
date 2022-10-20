@@ -4,41 +4,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http.ModelBinding;
+using GlobalTeleHospital.BL;
 
 namespace GlobalTeleHospital.Models.Data
 {
-    public class ClinicDbRepo
+    public class ClinicDbRepo : IClinicRepo
     {
         private ClinicDbContext db = new ClinicDbContext();
-        public void CreateClinic(ClinicDTO clinicdto)
+        public string CreateClinic(ClinicServiceDTO clinicdto)
         {
-            Clinic cln = new Clinic();
+            Clinic cln;
+            cln = Logic.ClinicServiceDtoToClinic(clinicdto);
 
-
-            cln.ClinicId = clinicdto.ClinicId;
-            cln.ClinicName = clinicdto.ClinicName;
-            cln.StreetAddress = clinicdto.StreetAddress;
-            cln.BussinessName = clinicdto.BussinessName;
-            cln.City = clinicdto.City;
-            cln.Country = clinicdto.Country;
-            cln.ZipCode = clinicdto.ZipCode;
-            cln.Latitude = clinicdto.Latitude;
-            cln.Longitude = clinicdto.Longitude;
-            cln.DateCreated = clinicdto.DateCreated;
-
-
-            ClinicService sr = new ClinicService();
-            foreach (var item in clinicdto.ClinicDto)
-            {
-                sr.IsActive = item.Value;
-                sr.ServiceId = item.Key;
-                sr.ClinicId = clinicdto.ClinicId;
-
-                db.ClinicServices.Add(sr);
-            }
-
+            if (cln == null)
+                return " ";
             db.Clinics.Add(cln);
             db.SaveChanges();
+
+            return "Created";
         }
 
         public List<Clinic> GetClinics()
@@ -92,6 +75,5 @@ namespace GlobalTeleHospital.Models.Data
                 return null;
             return cr;
         }
-
     }
 }

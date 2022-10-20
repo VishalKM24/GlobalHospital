@@ -11,7 +11,7 @@ namespace GlobalTeleHospital.Controllers
 {
     public class ClinicController : ApiController
     {
-        private ClinicDbRepo repo = new ClinicDbRepo();
+        private IClinicRepo repo = new ClinicDbRepo();
 
         [HttpGet]
         [Route("api/clinic")]
@@ -72,14 +72,48 @@ namespace GlobalTeleHospital.Controllers
 
         [HttpPost]
         [Route("api/clinic")]
-        public IHttpActionResult PostClinicDto(ClinicDTO clinic)
+        public IHttpActionResult PostClinicDto(ClinicServiceDTO clinic)
         {
+            // string val = "";
             if (!ModelState.IsValid)
                 return NotFound();
-            repo.CreateClinic(clinic);
-
+            try
+            {
+                repo.CreateClinic(clinic);
+            }
+            catch (Exception exe)
+            {
+                return BadRequest(exe.Message);
+            }
             return Ok(clinic);
         }
 
+        [HttpPut]
+        [Route("api/clinic")]
+        public IHttpActionResult PutClinic(Clinic clinic)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return NotFound();
+                repo.UpdateClinic(clinic);
+                return Ok(clinic);
+            }
+            catch (Exception exe)
+            {
+                return BadRequest(exe.Message);
+            }
+        }
+
+        [HttpPut]
+        [Route("api/service")]
+        public IHttpActionResult PutService(Service service)
+        {
+            if (!ModelState.IsValid)
+                return NotFound();
+
+            repo.UpdateService(service);
+            return Ok(service);
+        }
     }
 }

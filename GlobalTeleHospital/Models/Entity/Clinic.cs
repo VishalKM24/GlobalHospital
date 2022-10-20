@@ -34,6 +34,7 @@ namespace GlobalTeleHospital.Models.Entity
         public string Longitude { get; set; }
         [Required]
         public DateTime DateCreated { get; set; }
-
+        //public virtual List<Service> services { get; set; }
+        public virtual List<ClinicService> clinicservice { get; set; }
     }
 }

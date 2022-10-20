@@ -16,6 +16,5 @@ namespace GlobalTeleHospital.Models.Entity
         public string SeviceCode { get; set; }
         [MaxLength(200)]
         public string ServiceDescription { get; set; }
-        public float AvgPrice { get; set; }
     }
 }

@@ -114,3 +114,5 @@ C:\Users\Admin\Desktop\Framework-Projects\MVC\GlobalTeleHospital\GlobalTeleHospi
 C:\Users\Admin\Desktop\Framework-Projects\MVC\GlobalTeleHospital\GlobalTeleHospital\obj\Debug\GlobalTeleHospital.csproj.CopyComplete
 C:\Users\Admin\Desktop\Framework-Projects\MVC\GlobalTeleHospital\GlobalTeleHospital\obj\Debug\GlobalTeleHospital.dll
 C:\Users\Admin\Desktop\Framework-Projects\MVC\GlobalTeleHospital\GlobalTeleHospital\obj\Debug\GlobalTeleHospital.pdb
+C:\Users\Admin\Desktop\Framework-Projects\MVC\GlobalTeleHospital\GlobalTeleHospital\bin\AutoMapper.dll
+C:\Users\Admin\Desktop\Framework-Projects\MVC\GlobalTeleHospital\GlobalTeleHospital\bin\AutoMapper.xml
